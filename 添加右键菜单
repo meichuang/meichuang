@@ -1,0 +1,12 @@
+1、在目录上添加右键菜单
+  位置：HKEY_CLASSES_ROOT\Folder\shell
+  下面的command项，参数使用%1
+2、在目录空白处添加右键菜单
+  位置：HKEY_CLASSES_ROOT\Directory\Background\shell
+  下面的command项，参数使用%V
+
+3、添加的内容
+  1）新建项：HKEY_CLASSES_ROOT\Directory\Background\shell\runPython
+     默认字符串为右键提示内容。
+  2）新command项：HKEY_CLASSES_ROOT\Directory\Background\shell\runPython\command
+     默认字符串为运行的命令
