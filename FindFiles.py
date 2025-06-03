@@ -6,6 +6,7 @@ import tkinter as tk
 from tkinter import filedialog, messagebox
 import subprocess
 import json
+from AutoCompleteEntry  import AutoCompleteEntry
 
 CONFIG_FILE = 'fileconfig.json'
 
@@ -24,6 +25,8 @@ def save_config(directory, history):
     """
     将当前选择的目录保存到配置文件
     """
+    pattern_entry.set_history(history)
+
     config = {'last_directory': directory, 'history': history}
     with open(CONFIG_FILE, 'w') as f:
         json.dump(config, f)
@@ -69,6 +72,7 @@ def search_files(event=None):
     global history  # 声明 history 为全局变量
     directory = directory_entry.get()
     pattern = pattern_entry.get().upper()
+    pattern_entry.hide_suggestions()
     pattern_new = pattern.replace(" ",'_')
     pattern_new = "*" + pattern_new + ".txt"
     print(pattern_new)
@@ -150,7 +154,10 @@ def initWindow():
     # 设置匹配模式
     pattern_label = tk.Label(root, text="匹配模式:")
     pattern_label.grid(row=1, column=0, padx=5, pady=5, sticky=tk.W)
-    pattern_entry = tk.Entry(root, width=70)
+    #pattern_entry = tk.Entry(root, width=70)
+    pattern_entry = AutoCompleteEntry(root, width=70)
+    pattern_entry.set_history(history)
+
     pattern_entry.grid(row=1, column=1, padx=5, pady=5, sticky=tk.W)
     search_button = tk.Button(root, text="搜索", command=search_files)
     search_button.grid(row=1, column=2, padx=5, pady=5, sticky=tk.W)
