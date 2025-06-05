@@ -33,7 +33,7 @@ class HttpData(object):
             },
             "loginAccount": "m60079351",
             "uid": "m60079351",
-            "password": "Mei090120@",
+            "password": "*****",
             "lang": "zh_CN",
             "cid": "",
             "targetUrl": "https%3A%2F%2Fnetcare.huawei.com%2Fp%2Fnetcare%2Fnew.html%23%2Fhome",
